@@ -1,0 +1,25 @@
+<header><h1>Projeto Dogs</h1></header>
+<div>
+  <div *ngIf="this.dogs">
+    <div
+      *ngIf="
+        dogs.url.includes('.mp4') || dogs.url.includes('.webm');
+        else image
+      "
+    >
+      <video [src]="dogs.url" autoplay muted loop></video>
+    </div>
+    <ng-template #image>
+      <img [src]="dogs.url" alt="" />
+    </ng-template>
+  </div>
+  <div class="button">
+    <button class="getDogs" (click)="getdogs()">Generate doggo! 🐶</button>
+  </div>
+
+  <div>
+    <div id="size" *ngIf="this.dogs">
+      Doggo size: {{ dogs.file_size_bytes }} bytes!
+    </div>
+  </div>
+</div>
